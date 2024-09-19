@@ -1,0 +1,7 @@
+.galleryList{
+   margin: 0 20px 20px 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}

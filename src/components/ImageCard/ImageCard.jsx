@@ -1,8 +1,16 @@
+import s from "./ImageCard.module.css"
+
+const ImageCard = ({galleryData:{urls: {small},
+  description},onClick
+ 
+}) => {
 
 
-const ImageCard = () => {
+
   return (
-    <div>ImageCard</div>
+    <div className={s.imageBox}>
+  <img className={s.image} src={small} alt={description} onClick={onClick} />
+</div>
   )
 }
 

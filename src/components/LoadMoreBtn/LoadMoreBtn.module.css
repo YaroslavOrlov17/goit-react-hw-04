@@ -1,0 +1,8 @@
+.btnBox {
+    display: flex;
+    justify-content: center;
+}
+
+.btnLoad {
+    margin-bottom: 20px;
+}

@@ -1,14 +1,34 @@
+import s from "./SearchBar.module.css"
+
+import toast, { Toaster } from 'react-hot-toast';
 
 
-const SearchBar = () => {
+const SearchBar = ({onSubmit}) => {
+
+const handleSubmit = (e)=>{
+e.preventDefault()
+const form = e.target
+const value = form.elements.searchQuery.value
+if (value.trim()=== ""){
+  form.reset()
+  toast.error("Please enter your request!")
+  return
+}
+onSubmit(value);
+form.reset()
+
+}
+
   return (
-    <header>
-  <form>
+    <header className={s.header}>
+      <Toaster/>
+  <form onSubmit={handleSubmit}>
     <input
       type="text"
-      autocomplete="off"
-      autofocus
+      autoComplete="off"
+      autoFocus
       placeholder="Search images and photos"
+      name="searchQuery"
     />
     <button type="submit">Search</button>
   </form>

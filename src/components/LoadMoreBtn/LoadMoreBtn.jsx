@@ -1,8 +1,13 @@
+import s from './LoadMoreBtn.module.css'
 
+const LoadMoreBtn = ({onChangePage}) => {
+  function handleClick(){
+  
+    onChangePage()
+  }
 
-const LoadMoreBtn = () => {
   return (
-    <div>LoadMoreBtn</div>
+    <div className={s.btnBox}><button className={s.btnLoad} type="button" onClick={handleClick}>Load more...</button></div>
   )
 }
 
