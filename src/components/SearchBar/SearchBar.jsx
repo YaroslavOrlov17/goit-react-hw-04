@@ -21,7 +21,8 @@ form.reset()
 
   return (
     <header className={s.header}>
-      <Toaster/>
+      <Toaster   position="top-right"
+  reverseOrder={true}/>
   <form className={s.form} onSubmit={handleSubmit}>
     <input className={s.input}
       type="text"
