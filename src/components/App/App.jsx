@@ -17,12 +17,7 @@ function App() {
   const [query,setQuery] = useState("")
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
-
-  function handleImageClick(image){
-    setSelectedImage(image)
-    setIsOpen(true)
-  }
+  const [totalImages, setTotalImages] = useState(0);
 
 
 useEffect(()=>{
@@ -35,7 +30,8 @@ useEffect(()=>{
       setLoading(true)
       const data = await fetchImage(page,query)
       console.log(data);
-      setImages((prev)=> [...prev,...data])
+      setImages((prev)=> [...prev,...data.results])
+      setTotalImages(data.total);
     }catch {
       setError(true)
     }finally{
@@ -55,40 +51,31 @@ const handleChangePage = ()=>{
   setPage((prev)=> prev + 1)
 }
 
+function handleImageClick(image){
+  setSelectedImage(image)
+  setIsOpen(true)
+}
+
+
 function closeModal() {
   setIsOpen(false);
 }
 
   return <div className={s.appContainer}>
-  <SearchBar onSubmit={handleSetQuery}/>
+<SearchBar onSubmit={handleSetQuery}/>
+  <div className={s.mainContent}>
   {error && <ErrorMessage/>}
+  {!loading && images.length === 0 && query && <p className={s.noResults}>Sorry, we could not find any photos matching your search. Please try another keyword</p>} 
   {images.length> 0 && <ImageGallery onImageClick={handleImageClick} galleryData={images} />}
   {loading && <Loader />}
-  {images.length > 0 && <LoadMoreBtn onChangePage={handleChangePage}/>}
+  {images.length > 0 && images.length < totalImages && !loading && (
+  <LoadMoreBtn onChangePage={handleChangePage} />
+)}
   {modalIsOpen && <ImageModal isOpen={modalIsOpen} image={selectedImage} isClose={closeModal} />}
-
- 
+  </div>
   </div>
 }
 
 export default App;
 
 
-// //()=> {
-//   async function handleSearch (query){
-//     try {
-//   setImages([])
-//   setError(false)
-//   setLoading(true)
-//       const data =  await fetchImage(page,query)
-//       setImages(data)
-//       setPage(page +1)
-//       console.log(page);
-//       console.log(data);
-//     }catch {
-//   setError(true)
-//     }finally{
-//       setLoading(false)
-//     }
-//    }
-// },[page,query]

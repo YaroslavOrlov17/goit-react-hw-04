@@ -1,4 +1,15 @@
 .appContainer{
     width: 100wh;
     height: 100vh;
+    
+}
+
+.mainContent{
+    padding-top: 100px;
+   padding-bottom: 10px;
+}
+
+.noResults{
+    text-align: center;
+    
 }

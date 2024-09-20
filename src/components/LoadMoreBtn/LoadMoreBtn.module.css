@@ -5,4 +5,10 @@
 
 .btnLoad {
     margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
 }

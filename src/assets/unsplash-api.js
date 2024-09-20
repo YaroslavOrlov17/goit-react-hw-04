@@ -9,11 +9,11 @@ export const fetchImage = async (page,query) => {
     },
     params: {
       query: query, 
-      per_page: 8,
+      per_page: 12,
       page: page
     }
   })
-  return response.data.results
+  return response.data
 }
 
 

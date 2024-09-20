@@ -15,11 +15,13 @@ const customStyles = {
     padding: '0',
    border: 'none',
    borderRadius: '0',
-   backgroundColor: 'transparent'
+   backgroundColor: 'transparent',
+   zIndex: '4',
   },
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     backdropFilter: 'blur(10px)',
+    zIndex: '3',
   },
 };
 
@@ -40,20 +42,14 @@ const ImageModal = ({isOpen,isClose,image}) => {
     };
   }, [isOpen]);
 
-
-  
-
- 
-
   return (
     <div>
       <Modal
         isOpen={isOpen}
         style={customStyles}
         onRequestClose={isClose}
-        contentLabel="Example Modal"
-      >
-        <img className={s.fullImg} src={image.urls.regular} alt={image.description} />
+        contentLabel="Example Modal">
+        <img className={s.fullImg} src={image.urls.regular} alt={image.alt_description} />
       </Modal>
     </div>
   )
