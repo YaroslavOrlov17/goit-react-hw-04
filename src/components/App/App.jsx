@@ -29,7 +29,6 @@ useEffect(()=>{
       setError(false)
       setLoading(true)
       const data = await fetchImage(page,query)
-      console.log(data);
       setImages((prev)=> [...prev,...data.results])
       setTotalImages(data.total);
     }catch {
